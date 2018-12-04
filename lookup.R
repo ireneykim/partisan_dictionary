@@ -2,6 +2,9 @@
 nyt_comment <- read.csv("raw/lemma_n1000_gun.csv")
 
 nyt_comment %>% .$comment -> gun_comment
+
+#df_list <- split(nyt_comment, (seq(nrow(nyt_comment))-1) %/% 8000) 
+
 gun_comment0 <- gun_comment[1:7000] # make it smaller for testing
 
 gun_comment_label <- as.character(gun_comment0)
