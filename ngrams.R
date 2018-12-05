@@ -16,8 +16,10 @@ custom_stop_words1 <- tibble(word = c("a","a's","able","about","above","accordin
 
 custom_stop_words2 <- tibble(word = c("unless","unlikely","until","unto","up","upon","us","use","used","useful","uses","using","usually","uucp","v","value","various","very","via","viz","vs","w","want","wants","was","wasn't","way","we","we'd","we'll","we're","we've","welcome","well","went","were","weren't","what","what's","whatever","when","whence","whenever","where","where's","whereafter","whereas","whereby","wherein","whereupon","wherever","whether","which","while","whither","who","who's","whoever","whole","whom","whose","why","will","willing","wish","with","within","without","won't","wonder","would","wouldn't","x","y","yes","yet","you","you'd","you'll","you're","you've","your","yours","yourself","yourselves","z","zero"))
 
-custom_stop_words <- rbind(custom_stop_words1,custom_stop_words2)
-rm(custom_stop_words1,custom_stop_words2)
+custom_stop_words3 = tibble(word = c("jkt","po","frm","fmt","sfmt","ebr","dsk","tptvn","sptvn","ecrfma","vptvn","ec"))
+
+custom_stop_words <- rbind(custom_stop_words1,custom_stop_words2,custom_stop_words3)
+rm(custom_stop_words1,custom_stop_words2,custom_stop_words3)
 
 data(stop_words) #from tm
 
@@ -89,6 +91,9 @@ total_bigrams_chisq <- chisq_long %>%
     return(M)
   }))
 
+# or try this
+#total_bigrams_chisq2 <- separate_table(chisq_long)
+
 ## test chisq statistic
 bigrams_chisq <- total_bigrams_chisq %>%
   mutate(ps_pvalue = map_dbl(M, ~chisq.test(.x)$p.value)) %>%
@@ -105,7 +110,11 @@ total_bigrams$which <- ifelse(total_bigrams$compare > 0, "R", ifelse(total_bigra
 total_bigrams$sig <- ifelse(total_bigrams$ps_pvalue < 0.05, 1, 0)
 table(total_bigrams$sig,total_bigrams$which)
 
+## appearance ratio relative to the total frequency of bigrams
+
+total_bigrams$R_ratio <- (total_bigrams$rep_n)/(total_bigrams$rep_n+total_bigrams$rep_not)*100
+total_bigrams$D_ratio <- (total_bigrams$dem_n)/(total_bigrams$dem_n+total_bigrams$dem_not)*100
+
+###
 dict_R <- total_bigrams %>% filter(sig == 1 & which =="R") %>% select(bigram)
 dict_D <- total_bigrams %>% filter(sig == 1 & which =="D") %>% select(bigram)
-
-
