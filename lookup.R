@@ -1,3 +1,4 @@
+library(tidyverse)
 
 nyt_comment <- read.csv("raw/lemma_n1000_gun.csv")
 
@@ -20,3 +21,6 @@ gun_dict_lookup <- cbind(gun_comment_label,gun_rep,gun_dem)
 gun_dict_lookup <- gun_dict_lookup[,c("gun_comment_label","wf_rep","wf_dem")]
 gun_dict_lookup$wf_rep <- as.numeric(as.character(gun_dict_lookup$wf_rep))
 gun_dict_lookup$wf_dem <- as.numeric(as.character(gun_dict_lookup$wf_dem))
+
+table(gun_dict_lookup$wf_rep)
+table(gun_dict_lookup$wf_dem)
