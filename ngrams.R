@@ -115,6 +115,9 @@ table(total_bigrams$sig,total_bigrams$which)
 total_bigrams$R_ratio <- (total_bigrams$rep_n)/(total_bigrams$rep_n+total_bigrams$rep_not)*100
 total_bigrams$D_ratio <- (total_bigrams$dem_n)/(total_bigrams$dem_n+total_bigrams$dem_not)*100
 
+### visualization with word_graph function
+word_graph(total_bigrams, "tax", 10, 0.05)
+
 ### separate the words to each party
 dict_R <- total_bigrams %>% filter(sig == 1 & which =="R") %>% select(bigram)
 dict_D <- total_bigrams %>% filter(sig == 1 & which =="D") %>% select(bigram)

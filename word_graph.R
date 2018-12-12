@@ -9,7 +9,7 @@
 #' @importFrom magrittr "%>%"
 #' @importFrom dplyr "filter"
 #' @examples
-#' word_graph(df, "tax", 10, 0.05)
+#' word_graph(df 0.05)
 #' @export
 
 word_graph <- function(df, word=NULL, n, pvalue){

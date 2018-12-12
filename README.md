@@ -18,4 +18,9 @@ lookup.R
 R script to look up the partisan dictionary and count the number of word appearance in a new dataset (that should be pre-processed with the same way the dictionary made. Here, the datasets for the dictionary and the comment are applied by WordNet Lemmatizer with Penn Treebank tags for POS tagging in Python)
 
 word_graph.R
-R script to visualize a word graph that compares two corpses  
+R script to visualize a word graph that compares two corpses
+e.g.,
+# road bigram dataset (produced by ngram.R)
+total_bigram <- read.csv("raw/total_bigram.csv")
+# dataset, "key word", number of words listed, p-value (Pearson's Chi-square statistic)
+word_graph(total_bigrams, "tax", 10, 0.05)
