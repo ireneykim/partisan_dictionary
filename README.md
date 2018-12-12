@@ -24,5 +24,4 @@ R script to visualize a word graph that compares two corpses
 Example.
 
 total_bigram <- read.csv("raw/total_bigram.csv")
-
 word_graph(total_bigrams, "tax", 10, 0.05)
