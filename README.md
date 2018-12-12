@@ -21,7 +21,7 @@ R script to look up the partisan dictionary and count the number of word appeara
 # word_graph.R
 R script to visualize a word graph that compares two corpses
 
-Example:
+e.g.,
 
 total_bigram <- read.csv("raw/total_bigram.csv")
 
