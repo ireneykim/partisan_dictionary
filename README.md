@@ -13,7 +13,7 @@ R script to produce n-grams
 8) calculating the appearance ratio relative to the total frequency of bigrams (for visualization)
 
 # separate_table.R
-a function to produce a dataset for conducting Pearson's chi-square test with a long format
+A function to produce a dataset for conducting Pearson's chi-square test with a long format
 
 # lookup.R
 R script to look up the partisan dictionary and count the number of word appearance in a new dataset (that should be pre-processed with the same way the dictionary made. Here, the datasets for the dictionary and the comment are applied by WordNet Lemmatizer with Penn Treebank tags for POS tagging in Python)
@@ -21,7 +21,8 @@ R script to look up the partisan dictionary and count the number of word appeara
 # word_graph.R
 R script to visualize a word graph that compares two corpses
 
-e.g.,
+Example.
+
 total_bigram <- read.csv("raw/total_bigram.csv")
 
 word_graph(total_bigrams, "tax", 10, 0.05)
